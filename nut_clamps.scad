@@ -4,11 +4,13 @@ $fn=100;
 height = 20;
 bolt_size = 4; // options are M3 = 3, M4 = 4, M5 = 5
 captive_size = 3; // options  M3 = 3, M4 = 4, M5 = 5
+tol = 0.25;
 
-translate([0,-20,0])
-top_brace(height,bolt_size,captive_size); // arguments are (height,bolt size,captive nut size)
-
-bottom_brace(height,bolt_size); // arguments are (height,bolt size,captive nut size)
+module nut_clamp_pair(h = height, bs = bolt_size, cs = captive_size, tol = tol) {
+	translate([0,-20,0])
+		top_brace(h, bs, cs, tol); // arguments are (height,bolt size,captive nut size)
+	bottom_brace(h, bs, tol); // arguments are (height,bolt size,captive nut size)
+}
 
 module fillet(rad,height){
 
